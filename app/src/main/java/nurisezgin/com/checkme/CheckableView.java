@@ -1,6 +1,7 @@
 package nurisezgin.com.checkme;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.Checkable;
 import android.widget.FrameLayout;
@@ -13,20 +14,36 @@ public class CheckableView extends FrameLayout implements Checkable {
     private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
     private OnCheckedChangeListener mListener = new OnCheckedChangeListener.Empty();
     private boolean mChecked;
-
-    public CheckableView(Context context) {
-        super(context);
-    }
+    private boolean useChildrenStates;
 
     public CheckableView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(attrs);
     }
 
     public CheckableView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(attrs);
     }
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener l) {
+    private void init(AttributeSet attrs) {
+        parseXmlAttributes(attrs);
+        applyAttributes();
+    }
+
+    private void parseXmlAttributes(AttributeSet attrs) {
+        TypedArray arr = getContext().obtainStyledAttributes(attrs, R.styleable.CheckableView);
+        mChecked = arr.getBoolean(R.styleable.CheckableView_isChecked, false);
+        useChildrenStates = arr.getBoolean(R.styleable.CheckableView_useChildrenState, false);
+        arr.recycle();
+    }
+
+    private void applyAttributes() {
+        setChecked(mChecked);
+        setAddStatesFromChildren(useChildrenStates);
+    }
+
+    public void setCheckedChangeListener(OnCheckedChangeListener l) {
         mListener = l;
     }
 
