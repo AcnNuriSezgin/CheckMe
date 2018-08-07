@@ -6,7 +6,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.SoundEffectConstants;
 import android.widget.Checkable;
 import android.widget.FrameLayout;
 
@@ -56,17 +55,17 @@ public class CheckableView extends FrameLayout implements Checkable {
         setAddStatesFromChildren(useChildrenStates);
     }
 
-    @Override
-    public boolean performClick() {
-        toggle();
-
-        final boolean handled = super.performClick();
-        if (!handled) {
-            playSoundEffect(SoundEffectConstants.CLICK);
-        }
-
-        return handled;
-    }
+//    @Override
+//    public boolean performClick() {
+//        toggle();
+//
+//        final boolean handled = super.performClick();
+//        if (!handled) {
+//            playSoundEffect(SoundEffectConstants.CLICK);
+//        }
+//
+//        return handled;
+//    }
 
     public void setCheckedChangeListener(OnCheckedChangeListener l) {
         if (l == null) {
