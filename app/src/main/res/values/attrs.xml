@@ -4,5 +4,7 @@
         <attr name="isChecked" format="boolean" />
         <attr name="useChildrenState" format="boolean" />
     </declare-styleable>
-
+    <declare-styleable name="SingleSelectionGroup">
+        <attr name="checkedId" format="reference" />
+    </declare-styleable>
 </resources>

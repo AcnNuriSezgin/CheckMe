@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 27
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 18
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -24,5 +24,11 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
+
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.google.truth:truth:0.42'
+    androidTestImplementation 'org.mockito:mockito-android:2.21.0'
+
+    implementation 'com.android.support:support-annotations:27.1.1'
 }
